@@ -19,7 +19,8 @@ export default function ToDoList({ toDoTasks = [] }) {
     setButtonFlag,
   } = useContext(ToDoContext);
   let toDos = toDoTasks.length > 0 ? toDoTasks : state;
-  console.log(toDos);
+  let url = window.location.href;
+  let separatedUrl = url.split("/").at(-1);
   return (
     <ul className={Classes.todoList}>
       {toDos.map((todoItem) => {
@@ -34,6 +35,7 @@ export default function ToDoList({ toDoTasks = [] }) {
             onActionNoneClick={handleNoneTodo}
             buttonFlag={buttonFlag}
             setButtonFlag={setButtonFlag}
+            separatedUrl={separatedUrl}
           />
         );
       })}
@@ -48,6 +50,7 @@ function Item({
   onActionInProgressClick,
   onActionEditClick,
   onActionNoneClick,
+  separatedUrl,
 }) {
   return (
     <li className={Classes.todoItem}>
@@ -73,18 +76,20 @@ function Item({
       </div>
       <section className={Classes.todoMenuList}>
         <ul className={Classes.actionsMenu}>
-          <li className={Classes.actionItemEdit}>
-            {todoItem.isGettingEdited ? (
-              <GiConfirmed
-                onClick={() => {
-                  onActionEditClick(todoItem.id);
-                  todoItem.isGettingEdited = false;
-                }}
-              />
-            ) : (
-              <FaRegEdit onClick={() => onActionEditClick(todoItem.id)} />
-            )}
-          </li>
+          {separatedUrl === "" && (
+            <li className={Classes.actionItemEdit}>
+              {todoItem.isGettingEdited ? (
+                <GiConfirmed
+                  onClick={() => {
+                    onActionEditClick(todoItem.id);
+                    todoItem.isGettingEdited = false;
+                  }}
+                />
+              ) : (
+                <FaRegEdit onClick={() => onActionEditClick(todoItem.id)} />
+              )}
+            </li>
+          )}
           <li className={Classes.actionItemDone}>
             <IoMdDoneAll
               onClick={() => onActionDoneClick(todoItem.id)}

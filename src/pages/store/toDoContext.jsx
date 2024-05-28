@@ -12,7 +12,6 @@ export const ToDoContext = createContext({
   buttonFlag: false,
   setButtonFlag: () => {},
 });
-
 function reducer(state, action) {
   switch (action.type) {
     case "addToList":
