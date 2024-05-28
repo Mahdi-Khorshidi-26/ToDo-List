@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Classes from "./error.module.css";
-export default function Error({ message = "page has not been found!!! 😥" }) {
+export default function Error({
+  message = "Oops SomeThing Went Wrong !!!! 😥",
+}) {
   return (
     <div className={Classes.message}>
       <div>

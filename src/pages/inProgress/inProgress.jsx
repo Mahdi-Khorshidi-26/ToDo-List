@@ -1,12 +1,20 @@
 /* eslint-disable react/prop-types */
-import { ToDoList } from "../../components/toDoList";
-export default function InProgress({ toDos }) {
-  let inProgressList = toDos.filter((item) => {
+import Classes from "./inProgress.module.css";
+import ToDoList from "../../components/toDoList";
+import { useContext } from "react";
+import { ToDoContext } from "../store/toDoContext";
+export default function InProgress() {
+  const { state } = useContext(ToDoContext);
+  let inProgressList = state.filter((item) => {
     return item.status === "inProgress";
   });
   return (
-    <div>
-      <ToDoList toDos={inProgressList} />
-    </div>
+    <>
+      {inProgressList.length <= 0 ? (
+        <div className={Classes.emptyList}>there is noting to show 📋</div>
+      ) : (
+        <ToDoList toDoTasks={inProgressList} />
+      )}
+    </>
   );
 }

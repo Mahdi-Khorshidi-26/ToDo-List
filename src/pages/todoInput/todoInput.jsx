@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import Classes from "./todoInput.module.css";
-export default function ToDoInput({
-  todo,
-  handleSubmitForm,
-  setTodo,
-  select,
-  setSelect,
-  refInput,
-  showInput,
-  setShowInput,
-  buttonFlag,
-  handleEditTodo,
-}) {
+import { useContext } from "react";
+import { ToDoContext } from "../store/toDoContext";
+export default function ToDoInput() {
+  const {
+    todo,
+    handleSubmitForm,
+    setTodo,
+    select,
+    setSelect,
+    refInput,
+    showInput,
+    setShowInput,
+    buttonFlag,
+    handleEditTodo,
+  } = useContext(ToDoContext);
+
   function handleShow() {
     setShowInput((pervShow) => !pervShow);
   }

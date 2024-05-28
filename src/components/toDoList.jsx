@@ -4,18 +4,22 @@ import { MdDeleteForever } from "react-icons/md";
 import { GrInProgress } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { GiConfirmed } from "react-icons/gi";
-
+import { useContext } from "react";
+import { ToDoContext } from "../pages/store/toDoContext";
 import Classes from "./toDoList.module.css";
-export function ToDoList({
-  toDos,
-  onActionDeleteClick,
-  onActionDoneClick,
-  onActionInProgressClick,
-  onActionEditClick,
-  onActionNoneClick,
-  buttonFlag,
-  setButtonFlag,
-}) {
+export default function ToDoList({ toDoTasks = [] }) {
+  const {
+    state,
+    handleEditTodo,
+    handleDeleteTodo,
+    handleDoneTodo,
+    handleInProgressTodo,
+    handleNoneTodo,
+    buttonFlag,
+    setButtonFlag,
+  } = useContext(ToDoContext);
+  let toDos = toDoTasks.length > 0 ? toDoTasks : state;
+  console.log(toDos);
   return (
     <ul className={Classes.todoList}>
       {toDos.map((todoItem) => {
@@ -23,11 +27,11 @@ export function ToDoList({
           <Item
             key={todoItem.id}
             todoItem={todoItem}
-            onActionDeleteClick={onActionDeleteClick}
-            onActionDoneClick={onActionDoneClick}
-            onActionInProgressClick={onActionInProgressClick}
-            onActionEditClick={onActionEditClick}
-            onActionNoneClick={onActionNoneClick}
+            onActionDeleteClick={handleDeleteTodo}
+            onActionDoneClick={handleDoneTodo}
+            onActionInProgressClick={handleInProgressTodo}
+            onActionEditClick={handleEditTodo}
+            onActionNoneClick={handleNoneTodo}
             buttonFlag={buttonFlag}
             setButtonFlag={setButtonFlag}
           />

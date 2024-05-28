@@ -30,21 +30,5 @@ export const todoListDummyData = [
     date: new Date().toLocaleString(Date.now()),
     editedDate: null,
     isGettingEdited: false,
-  },
-  {
-    todo: "cleaning up my room and closet",
-    status: "inProgress",
-    id: 5,
-    date: new Date().toLocaleString(Date.now()),
-    editedDate: null,
-    isGettingEdited: false,
-  },
-  {
-    todo: "going to work and doing the tasks",
-    status: "done",
-    id: 6,
-    date: new Date().toLocaleString(Date.now()),
-    editedDate: null,
-    isGettingEdited: false,
-  },
+  }
 ];
