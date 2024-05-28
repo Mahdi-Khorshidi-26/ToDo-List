@@ -1,0 +1,30 @@
+.menuWrapper,
+.menu {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.menuWrapper {
+    background-color: blanchedalmond;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+}
+
+.menu {
+    font-size: 2rem;
+    justify-content: center;
+}
+
+.menuLink {
+    color: #333;
+}
+
+.menuLogo {
+    font-size: 3rem;
+}
+
+.menuLinkActive {
+    color: black;
+    border-bottom: .1rem solid #9999;
+}
