@@ -13,7 +13,6 @@ export default function ToDoInput() {
     showInput,
     setShowInput,
     buttonFlag,
-    handleEditTodo,
   } = useContext(ToDoContext);
 
   function handleShow() {
@@ -21,10 +20,7 @@ export default function ToDoInput() {
   }
   return (
     <div className={Classes.inputWrapper}>
-      <form
-        className={Classes.form}
-        onSubmit={buttonFlag ? handleEditTodo : handleSubmitForm}
-      >
+      <form className={Classes.form} onSubmit={(e) => handleSubmitForm(e)}>
         {!buttonFlag && (
           <button className={Classes.addBtn} onClick={handleShow}>
             Add

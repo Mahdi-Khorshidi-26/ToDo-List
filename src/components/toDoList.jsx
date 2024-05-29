@@ -23,6 +23,9 @@ export default function ToDoList({ toDoTasks = [] }) {
   let separatedUrl = url.split("/").at(-1);
   return (
     <ul className={Classes.todoList}>
+      {toDos.length <= 0 && (
+        <div className={Classes.emptyList}>there is noting to show 📋</div>
+      )}
       {toDos.map((todoItem) => {
         return (
           <Item
@@ -90,6 +93,7 @@ function Item({
               )}
             </li>
           )}
+
           <li className={Classes.actionItemDone}>
             <IoMdDoneAll
               onClick={() => onActionDoneClick(todoItem.id)}
