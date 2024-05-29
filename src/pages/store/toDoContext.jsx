@@ -11,6 +11,7 @@ export const ToDoContext = createContext({
   handleNoneTodo: () => {},
   buttonFlag: false,
   setButtonFlag: () => {},
+  changeTheOrderOfElements: () => {},
 });
 
 function reducer(state, action) {
@@ -104,6 +105,11 @@ export default function ToDoContextStateManger({ children }) {
     }
     dispatch({ type: "changeStatus", payLoad: newList });
   }
+
+  function changeTheOrderOfElements(newList) {
+    dispatch({ type: "changeStatus", payLoad: newList });
+  }
+
   let inProgressList = state.filter((item) => {
     return item.status === "inProgress";
   });
@@ -135,6 +141,7 @@ export default function ToDoContextStateManger({ children }) {
     refInput,
     showInput,
     setShowInput,
+    changeTheOrderOfElements,
   };
 
   return <ToDoContext.Provider value={ctx}>{children}</ToDoContext.Provider>;
